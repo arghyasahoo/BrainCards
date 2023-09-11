@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcards</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Carousel</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <form id="upload-csv">
-        <input type="file" id="csvFile" name="csvFile" accept=".csv" required />
-        <br/><br/>
-        <input type="submit" value="Upload" />
-    </form>
-</body>
-<script>
-    function parseCSV(text) {
-        var lines = text.split('\n');
-        var headers = lines[0].split(',');
-        if (headers[0] !== "question" && headers[1] !== "answer") {
-            alert("Invalid CSV file");
-        } else {
-            var data = lines.slice(1).map(function(line) {
-                var values = line.split(',');
-                var obj = {};
-                headers.forEach(function(header, i) {
-                    obj[header.trim()] = values[i].trim();
-                });
-                return obj;
-            });
-            console.log(data);
-        }
-    }
+  <h1><span id="heading-first">Brain</span>&nbsp;&nbsp;<span id="heading-last">Cards</span></h1>
+  <div class="flashcard-slideshow">
+    <div class="flashcard">
+      <!-- Front content of the flashcard -->
+      <div class="flashcard-inner">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+    </div>
+  </div>
+  <div class="buttons-container">
+    <span id="prev-btn-container">
+      <button id="prev" class="button">Prev</button>
+    </span>
+    <span id="browse-btn-container">
+      <input type="file" id="csvFile" class="button" accept=".csv" />
+    </span>
+    <span id="next-btn-container">
+      <button id="next" class="button">Next</button>
+    </span>
+  </div>
 
-    document.getElementById("upload-csv").addEventListener("submit", function(event) {
-    event.preventDefault();
-    var file = document.getElementById("csvFile").files[0];
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        var contents = e.target.result;
-        parseCSV(contents);
-    };
-    reader.readAsText(file);
-    });
-</script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
 </html>

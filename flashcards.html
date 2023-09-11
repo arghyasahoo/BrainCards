@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Carousel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1><span id="heading-first">Brain</span>&nbsp;&nbsp;<span id="heading-last">Cards</span></h1>
+  <div class="flashcard-slideshow">
+    <div class="flashcard">
+      <!-- Front content of the flashcard -->
+      <div class="flashcard-inner">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+    </div>
+  </div>
+  <div class="buttons-container">
+    <span id="prev-btn-container">
+      <button id="prev" class="button">Prev</button>
+    </span>
+    <span id="browse-btn-container">
+      <input type="file" id="csvFile" class="button" accept=".csv" />
+    </span>
+    <span id="next-btn-container">
+      <button id="next" class="button">Next</button>
+    </span>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

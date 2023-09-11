@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+</head>
+<body>
+    <form id="upload-csv">
+        <input type="file" id="csvFile" name="csvFile" accept=".csv" required />
+        <br/><br/>
+        <input type="submit" value="Upload" />
+    </form>
+</body>
+<script>
+    function parseCSV(text) {
+        var lines = text.split('\n');
+        var headers = lines[0].split(',');
+        if (headers[0] !== "question" && headers[1] !== "answer") {
+            alert("Invalid CSV file");
+        } else {
+            var data = lines.slice(1).map(function(line) {
+                var values = line.split(',');
+                var obj = {};
+                headers.forEach(function(header, i) {
+                    obj[header.trim()] = values[i].trim();
+                });
+                return obj;
+            });
+            console.log(data);
+        }
+    }
+
+    document.getElementById("upload-csv").addEventListener("submit", function(event) {
+    event.preventDefault();
+    var file = document.getElementById("csvFile").files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var contents = e.target.result;
+        parseCSV(contents);
+    };
+    reader.readAsText(file);
+    });
+</script>
+</html>

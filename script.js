@@ -9,6 +9,9 @@ var parsedData;
  * @return {array} The parsed data as an array of objects.
  */
 function parseCSV(csvString) {
+    if (csvString === null || csvString === undefined || csvString === "") {
+      return;
+    }
     var rows = csvString.split("\r\n");
     var headers = rows[0].split(",");
 
@@ -17,19 +20,18 @@ function parseCSV(csvString) {
       var rowData = {};
       headers.forEach(function (header, index) {
         var value = columns[index];
-        // Handle empty values
+        console.log(value);
+        
         if (value === "") {
-          value = null; // or any default value you prefer
-        }
-        // Handle quoted fields
-        if (value.charAt(0) === '"' && value.charAt(value.length - 1) === '"') {
-          value = value.slice(1, -1); // Remove the quotes
+          console.log("empty Value")
+          return;
+        } else if (value.charAt(0) === '"' && value.charAt(value.length - 1) === '"') {
+          value = value.slice(1, -1);
         }
         rowData[header] = value;
       });
       return rowData;
     });
-    // Rest of the parsing logic goes here
     return parsedData
   }
 
@@ -43,7 +45,7 @@ function parseCSV(csvString) {
 
     // Update the flashcard content with the parsed data
     var flashcard_slideshow = document.querySelector('.flashcard-slideshow');
-    var flashcard = flashcard_slideshow.querySelector('.flashcard')
+    var flashcard = flashcard_slideshow.querySelector('.flashcard');
     flashcard.querySelector('.front').textContent = data.question;
     flashcard.querySelector('.back').textContent = data.answer;
   }
@@ -58,7 +60,9 @@ function parseCSV(csvString) {
   function handleFileUpload(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
-  
+    
+    reader.readAsText(file);
+
     reader.onload = function (e) {
       parsedData = parseCSV(reader.result);
       showFlashCard();
@@ -123,7 +127,7 @@ function parseCSV(csvString) {
    */
   function initiate(event) {
     handleFileUpload(event);
-    addHoverAnimation();
+    // addHoverAnimation();
   }
 
 
@@ -163,10 +167,9 @@ function parseCSV(csvString) {
   /**
    * Adds a hover animation to the flashcard element.
    *
-   * @param {Event} event - The event object triggered by the hover action.
    * @return {void} This function does not return any value.
    */
-  function addHoverAnimation(event) {
+  function addHoverAnimation() {
     $(".flashcard").hover(
       function () {
           $(this).find(".front").css("transform", "rotateX(180deg)");
@@ -182,6 +185,9 @@ function parseCSV(csvString) {
 $(document).ready(function () {
     // Event listener for file upload
     $('#csvFile').on('change', initiate);
+
+    // Add hover animation on startup
+    addHoverAnimation();
     
     // Event listener for previous button
     $('#prev').on('click', showPrevFlashcard);

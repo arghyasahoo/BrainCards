@@ -7,26 +7,46 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1><span id="heading-first">Brain</span>&nbsp;&nbsp;<span id="heading-last">Cards</span></h1>
-  <div class="flashcard-slideshow">
-    <div class="flashcard">
-      <!-- Front content of the flashcard -->
-      <div class="flashcard-inner">
-        <p class="front"></p>
-        <p class="back"></p>
+  <div class="container">
+    <dialog id="dialog">
+      <h3>A Gentle Tutorial</h3>
+      <ol>
+        <li>Press "<strong>Browse</strong>" to upload a CSV file</li>
+        <ol>
+          <li>The CSV file should have a <strong>header row</strong></li>
+          <li>The header row should contain two items: "<strong>question</strong>" and "<strong>answer</strong>"</li>
+          <li>The following lines should contain the actual question and answer</li>
+        </ol>
+        <li>Press "<strong>Next</strong>" or click "<strong>Right Arrow</strong>" to move to the next flashcard</li>
+        <li>Press "<strong>Prev</strong>" or click "<strong>Left Arrow</strong>" to move to the previous flashcard</li>
+      </ol>
+      <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+    </dialog>
+
+    <h1><span id="heading-first">Brain</span>&nbsp;&nbsp;<span id="heading-last">Cards</span></h1>
+    <div class="flashcard-index">
+      <p id="index-content"></p>
     </div>
+    <div class="flashcard-slideshow">
+      <div class="flashcard">
+        <!-- Front content of the flashcard -->
+        <div class="flashcard-inner">
+          <p class="front"></p>
+          <p class="back"></p>
+      </div>
+      </div>
     </div>
-  </div>
-  <div class="buttons-container">
-    <span id="prev-btn-container">
-      <button id="prev" class="button">Prev</button>
-    </span>
-    <span id="browse-btn-container">
-      <input type="file" id="csvFile" class="button" accept=".csv" />
-    </span>
-    <span id="next-btn-container">
-      <button id="next" class="button">Next</button>
-    </span>
+    <div class="buttons-container">
+      <span id="prev-btn-container">
+        <button id="prev" class="button">Prev</button>
+      </span>
+      <span id="browse-btn-container">
+        <input type="file" id="csvFile" class="button" accept=".csv" />
+      </span>
+      <span id="next-btn-container">
+        <button id="next" class="button">Next</button>
+      </span>
+    </div>
   </div>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

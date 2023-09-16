@@ -1,5 +1,6 @@
 var currentIndex = 0;
 var parsedData;
+var totalFlashCards = 0;
 
 
 /**
@@ -71,18 +72,7 @@ function parseCSV(csvString) {
     reader.readAsText(file);
   }
   
-  
-/**
- * Toggles the 'flip' class on the flashcard element.
- *
- * @param {none} none - This function does not take any parameters.
- * @return {none} none - This function does not return anything.
- */
-  function toggleFlip() {
-    const flashcard = document.querySelector('.flashcard');
-    flashcard.classList.toggle('flip');
-  }
-  
+
 /**
  * Displays the next flashcard.
  *
@@ -127,7 +117,6 @@ function parseCSV(csvString) {
    */
   function initiate(event) {
     handleFileUpload(event);
-    // addHoverAnimation();
   }
 
 
@@ -162,6 +151,10 @@ function parseCSV(csvString) {
       }, 500);
     }
   }
+
+  // function updateIndex() {
+
+  // }
   
 
   /**
@@ -186,6 +179,7 @@ const LEFT_ARROW_KEY = 37;
 const RIGHT_ARROW_KEY = 39;
 
 $(document).ready(function () {
+    window.dialog.showModal();
     // Event listener for previous key
     $(document).keydown(function(e) {
       if(e.which == LEFT_ARROW_KEY) {

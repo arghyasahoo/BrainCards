@@ -182,7 +182,19 @@ function parseCSV(csvString) {
     );
   }
 
+const LEFT_ARROW_KEY = 37;
+const RIGHT_ARROW_KEY = 39;
+
 $(document).ready(function () {
+    // Event listener for previous key
+    $(document).keydown(function(e) {
+      if(e.which == LEFT_ARROW_KEY) {
+        showPrevFlashcard();
+      } else if(e.which == RIGHT_ARROW_KEY) {
+        showNextFlashcard();
+      }
+    });
+
     // Event listener for file upload
     $('#csvFile').on('change', initiate);
 

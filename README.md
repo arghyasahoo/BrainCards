@@ -14,6 +14,7 @@ And it is completely free too!
 Make a CSV file containing the headers:
 - question
 - answer
+
 The following lines of the CSV file should have the actual questions and answers
 
 ## Example

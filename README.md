@@ -7,7 +7,7 @@ With BrainCards, you're in control. Simply upload a CSV file with your questions
 
 And it is completely free too!
 
-**Access BrainCards here:** [BrainCards](braincards.netlify.app)
+**Access BrainCards here:** [BrainCards](https://braincards.netlify.app)
 
 ## Usage
 

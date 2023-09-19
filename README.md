@@ -5,6 +5,10 @@ Unlock your full learning potential with BrainCards, the ultimate flashcards app
 
 With BrainCards, you're in control. Simply upload a CSV file with your questions and answers, and watch as your study materials come to life.
 
+And it is completely free too!
+
+**Access BrainCards here:** [BrainCards](braincards.netlify.app)
+
 ## Usage
 
 Make a CSV file containing the headers:

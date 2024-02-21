@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+    #title-first {
+        font-family: "Raleway";
+        font-weight: 100;
+        font-size: 150px;
+    }
+    #title-last {
+        font-family: "Raleway";
+        font-weight: 400;
+        font-size: 150px;
+        color: #ffeba7;
+    }
+    #subtitle {
+        font-family: "Raleway";
+        font-weight: 200;
+        font-size: 25px;
+        padding-left: 15px;
+    }
+    .title {
+        margin-top: 20vh
+    }
+</style>
+{% endblock %}
+
+{% block nav_links %}
+<a class="btn nav-btn" href="{{ url_for('decks.view_all_decks') }}">My Decks</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 title">
+            <h1 class="display-1"><span id="title-first">Brain</span><span id="title-last">Cards</span></h1>
+            <p id="subtitle">A minimal Flashcards Application</p>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+    <div class="row">
+        
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% block title %}All Decks{% endblock %}
+{% block header %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+    .deck {
+        height: 60vh;
+        width: 90vh;
+        position: fixed;
+        left: 0;
+        border: 1px solid #ffeba7;
+        border-radius: 10px;
+        background: rgba(255, 235, 167, 0.28);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 235, 167, 0.3);
+        z-index: 1;
+    }
+
+    .inner-card-1 {
+        height: 60vh;
+        width: 90vh;
+        border: 1px solid #ffeba7;
+        border-radius: 10px;
+        border-left: 0;
+        position: fixed;
+        left: 10px;
+    }
+
+    .inner-card-2 {
+        height: 60vh;
+        width: 90vh;
+        border: 1px solid #ffeba7;
+        border-radius: 10px;
+        border-left: 0;
+        position: fixed;
+        left: 10px;
+    }
+
+    .inner-card-3 {
+        height: 60vh;
+        width: 90vh;
+        border: 1px solid #ffeba7;
+        border-radius: 10px;
+        border-left: 0;
+        position: fixed;
+        left: 10px;
+    }
+
+    #deck-name {
+        vertical-align: middle;
+        resize: none;
+        font-family: Raleway;
+        font-size: 32pt;
+        width: 80%;
+        height: 80%;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        background-color: rgba(0, 0, 0, 0);
+        border-color: rgba(0, 0, 0, 0);
+        color: #ffeba7;
+    }
+
+    /* textarea::placeholder {
+        color: rgba(255, 235, 167, 0.3);
+    } */
+
+    /* textarea.middle:focus {
+        outline-width: 0;
+    } */
+
+    .create-deck {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block nav_links %}
+<!-- {{ url_for('decks.create_deck') }} -->
+<div class="btn nav-btn save-btn">Save</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center" style="height: 90vh; width: 100vw;">
+        <div class="deck d-flex justify-content-center align-items-center text-center">
+            <div contenteditable="true" id="deck-name">Name Your Deck</div>
+        </div>
+        <div class="inner-card-1"></div>
+        <div class="inner-card-2"></div>
+        <div class="inner-card-3"></div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+<script>
+    anime({
+        targets: '.deck',
+        translateX: 100,
+        duration: 500,
+        delay: 50,
+        easing: 'easeInOutQuad'
+    });
+    anime({
+        targets: '.inner-card-1',
+        translateX: 150,
+        duration: 600,
+        delay: 50,
+        easing: 'easeInOutQuad'
+    });
+    anime({
+        targets: '.inner-card-2',
+        translateX: 200,
+        duration: 700,
+        delay: 50,
+        easing: 'easeInOutQuad'
+    });
+    anime({
+        targets: '.inner-card-3',
+        translateX: 250,
+        duration: 800,
+        delay: 50,
+        easing: 'easeInOutQuad'
+    });
+
+    $('.save-btn').click(function () {
+        anime({
+            targets: '.deck',
+            translateX: "120vw",
+            duration: 1000,
+            delay: 50,
+            easing: 'easeInOutQuad'
+        });
+        anime({
+            targets: '.inner-card-1',
+            translateX: "120vw",
+            duration: 900,
+            delay: 50,
+            easing: 'easeInOutQuad'
+        });
+        anime({
+            targets: '.inner-card-2',
+            translateX: "120vw",
+            duration: 800,
+            delay: 50,
+            easing: 'easeInOutQuad'
+        });
+        anime({
+            targets: '.inner-card-3',
+            translateX: "120vw",
+            duration: 700,
+            delay: 50,
+            easing: 'easeInOutQuad'
+        });
+
+        fetch("/decks/create", {
+            method: "POST",
+            body: JSON.stringify({
+                name: $('#deck-name').text()
+            }),
+            headers: {
+                "Content-type": "application/json"
+            }
+        });
+
+    });
+</script>
+{% endblock %}

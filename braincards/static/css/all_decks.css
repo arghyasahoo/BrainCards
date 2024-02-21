@@ -1,0 +1,35 @@
+.deck {
+    font-size: 2em;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #FFEBA7;
+    width: 8em;
+    height: 6em;
+    line-height: 2;
+    text-align: center;
+    border: 1px solid #FFEBA7;
+    border-radius: 10px;
+    font-family: Raleway, Arial, sans-serif;
+    font-weight: light;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s ease-in-out;
+}
+
+.deck:hover {
+    transform: translateY(-20px);
+    /* box-shadow: rgba(255, 235, 168, 0.3) 0px 30px 20px -3px; */
+    box-shadow: rgba(255,  235, 168, 0.4) 0px 5px, rgba(255,  235, 168, 0.3) 0px 10px, rgba(255,  235, 168, 0.2) 0px 15px, rgba(255,  235, 168, 0.1) 0px 20px, rgba(255,  235, 168, 0.05) 0px 25px;
+    transition: 0.3s ease-in-out;
+    color: #1F2029;
+    border-color: #1F2029;
+    background-color: #FFEBA7;
+}
+
+.link {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
